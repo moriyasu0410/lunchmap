@@ -23,11 +23,18 @@ class AjaxController extends Controller
 
 		// Lunchesコレクション読み込み
 		$models = new Lunches();
-		$lunches = $models->nearSphere($indexForm->longitude, $indexForm->latitude);
+		$lunches = $models->geoNearCommand($indexForm->longitude, $indexForm->latitude);
+
+		$cnt = 0;
+		foreach ($lunches['results'] as $lunch) {
+			$dis = $lunch['dis'] * 6378 * 1000;
+			$lunches['results'][$cnt]['distance'] = floor($dis);
+			$cnt++;
+		}
 
 		// テンプレート表示
 		$this->renderPartial('index', array(
-				'lunches' => $lunches));
+				'lunches' => $lunches['results']));
 	}
 
 }

@@ -19,7 +19,7 @@
             <dt>訪問日</dt><dd>{$lunch["visit_date"]->sec|date_format:"%Y/%m/%d(%a)"}</dd>
             <dt>価格</dt><dd>¥{$lunch["price"]}</dd>
  	        <dt>最寄り駅</dt><dd>{$lunch["nearest"]}</dd>
- 	        <dt>場所<i class="icon-map-marker"></i></dt><dd><a href='https://maps.google.com/maps?q={$lunch["location"]["latitude"]},{$lunch["location"]["longitude"]}' target=blank>地図</a></dd>
+ 	        <dt>場所<i class="icon-map-marker"></i></dt><dd><a href='https://maps.google.com/maps?q={$lunch["location"][1]},{$lunch["location"][0]}' target=blank>地図</a></dd>
  	        </dl>
         </div>
         </li>

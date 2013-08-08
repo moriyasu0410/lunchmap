@@ -8,11 +8,11 @@ class Lunches extends MongoConnection
 {
 	/**
 	 * ランチ検索（近い順）
-	 * @param int $longitude
-	 * @param int $latitude
-	 * @return MongoCursor Mongoカーソル
+	 * @param string $longitude
+	 * @param string $latitude
+	 * @return array ランチコレクション配列
 	 */
-	public function nearSphere($longitude, $latitude)
+	public function geoNearCommand($longitude, $latitude)
 	{
 		// mongoDB接続
 // 		$connection = new MongoClient();
@@ -21,19 +21,18 @@ class Lunches extends MongoConnection
 		// DB選択
 		$db = $connection->lunch;
 
-		// コレクション選択
-		$collection = $db->Lunches;
-
 		// 検索
-		$cursor = $collection->find(array(
-					'location'=>array(
-						'$nearSphere'=>array(
-								$longitude, $latitude
-						)
-					)
+		$result = $db->command(array(
+				    'geoNear' => 'Lunches',
+				    'near' => array(
+							(float)$longitude, (float)$latitude
+				    ),
+				    'spherical' => true,
+				    'uniqueDocs' => true,
+				    'num' => 10,
 				)
 		);
-		return $cursor;
+	return $result;
 
 	}
 
