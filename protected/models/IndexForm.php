@@ -19,6 +19,12 @@ class IndexForm extends CFormModel
 	public $latitude;
 
 	/**
+	 * ページ
+	 * @var int
+	 */
+	public $page;
+
+	/**
 	 * 単体チェック
 	 */
 	public function rules()
@@ -26,6 +32,7 @@ class IndexForm extends CFormModel
 		return array(
 			array('longitude, latitude', 'required'),
 			array('longitude, latitude', 'numerical'),
+			array('page', 'numerical'),
 		);
 	}
 

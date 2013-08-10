@@ -23,16 +23,16 @@ class Lunches extends MongoConnection
 
 		// 検索
 		$result = $db->command(array(
-				    'geoNear' => 'Lunches',
-				    'near' => array(
+					'geoNear' => 'Lunches',
+					'near' => array(
 							(float)$longitude, (float)$latitude
-				    ),
-				    'spherical' => true,
-				    'uniqueDocs' => true,
-				    'num' => 10,
+					),
+					'spherical' => true,
+					'uniqueDocs' => true,
+					'num' => 100,
 				)
 		);
-	return $result;
+		return $result;
 
 	}
 
