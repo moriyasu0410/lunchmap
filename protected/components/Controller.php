@@ -21,5 +21,4 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
-	public $cdn_url = 'http://localhost:8888/';
 }
