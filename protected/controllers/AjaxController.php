@@ -1,4 +1,7 @@
 <?php
+Yii::import("application.models.form.*");
+Yii::import("application.models.mongodb.*");
+Yii::import("application.models.const.*");
 /**
  * ランチマップAjax
  * @author moriyasu
@@ -26,8 +29,8 @@ class AjaxController extends LunchController
         $lunches = $models->geoNearCommand($indexForm->longitude, $indexForm->latitude);
 
         // カウント設定
-        $start = $indexForm->page * LunchLogic::DISPLAY_CNT;
-        $end = $start + LunchLogic::DISPLAY_CNT;
+        $start = $indexForm->page * LunchConst::DISPLAY_CNT;
+        $end = $start + LunchConst::DISPLAY_CNT;
         $total = count($lunches['results']);
 
         // 次ページチェック
