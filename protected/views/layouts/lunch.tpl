@@ -45,7 +45,7 @@
     </div><!-- footer -->
 
 </div><!-- page -->
-<script src="/js/jquery-2.0.2.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 {foreach from=$this->externalJavaScript item=var}
 <script src="/js/{$var}"></script>
